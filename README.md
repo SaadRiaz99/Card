@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🎂 Birthday App
 
 A simple Flask-based web application that lets users enter their name and receive a **random birthday message** with a fun animated display.
@@ -56,3 +57,21 @@ This project is perfect for beginners to learn **Flask, HTML, CSS animations, an
 ```bash
 git clone https://github.com/your-username/birthday-app.git
 cd birthday-app
+=======
+# Neon Heart Birthday Animation
+
+Run the neon heart Turtle animation (Windows):
+
+1. Ensure Python is installed (recommended 3.8+).
+2. From this folder, run:
+
+```powershell
+python d:/python/BIrthday/birthday_turtle.py
+```
+
+Notes:
+- The animation uses the `turtle` module (part of the Python standard library).
+- Close the Turtle window to stop the animation.
+
+Enjoy — it's a romantic neon-style birthday card for Saad Bin Riaz.
+>>>>>>> f71966d (add Birthday card for birthday)
