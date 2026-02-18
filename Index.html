@@ -1,11 +1,12 @@
-<<<<<<< HEAD:Index.html
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Birthday App - Monochrome</title>
+    <title>Birthday App - Black & Gold</title>
     <style>
+        /* core layout */
         body {
-            background: linear-gradient(135deg, #e0e0e0, #ffffff);
+            position: relative;
+            background: #000;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             justify-content: center;
@@ -14,16 +15,32 @@
             height: 100vh;
             margin: 0;
             overflow: hidden;
-            color: #333;
+            color: #fff;
+        }
+        /* subtle neon glow behind content */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 900px;
+            height: 900px;
+            background: radial-gradient(circle, rgba(255,215,0,0.25) 0%, rgba(255,215,0,0) 70%);
+            transform: translate(-50%, -50%);
+            filter: blur(160px);
+            z-index: 0;
+            pointer-events: none;
         }
 
         /* Wave animation for name */
         .wave-text {
             font-size: 48px;
             font-weight: bold;
-            color: #000;
+            color: #ffd700;
             margin-bottom: 20px;
             display: flex;
+            text-shadow: 0 0 8px rgba(255,215,0,0.6);
+            z-index: 1;
         }
 
         .wave-text span {
@@ -48,31 +65,31 @@
         }
 
         .card {
-            background: #fff;
+            background: #111;
             width: 450px;
             padding: 50px 30px;
             border-radius: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 0 30px rgba(255,215,0,0.4);
             text-align: center;
             position: relative;
             z-index: 1;
         }
 
-        h2 { color: #000; font-size: 36px; margin-bottom: 20px; text-shadow: 1px 1px 2px #aaa; }
-        h3 { color: #555; font-size: 30%px; margin-top: 20px; }
-        p { color: #333; font-weight: bold; font-size: 18px; }
+        h2 { color: #ffd700; font-size: 36px; margin-bottom: 20px; text-shadow: 0 0 6px rgba(255,215,0,0.8); }
+        h3 { color: #ddd; font-size: 30px; margin-top: 20px; }
+        p { color: #fff; font-weight: bold; font-size: 18px; }
 
         input {
             padding: 15px;
             width: 80%;
             margin-bottom: 20px;
             border-radius: 12px;
-            border: 2px solid #999;
+            border: 2px solid #555;
             font-size: 16px;
             outline: none;
             transition: all 0.3s;
-            background: #f7f7f7;
-            color: #222;
+            background: #222;
+            color: #fff;
         }
 
         input:focus {
@@ -82,17 +99,18 @@
 
         button {
             padding: 15px 30px;
-            background: #333;
-            color: #fff;
+            background: #ffd700;
+            color: #000;
             border: none;
             border-radius: 15px;
             font-size: 18px;
             cursor: pointer;
             transition: all 0.3s;
+            text-shadow: 0 0 4px rgba(255,215,0,0.6);
         }
 
         button:hover {
-            background: #555;
+            background: #e5c100;
             transform: scale(1.05);
         }
 
@@ -161,134 +179,7 @@
         {% endif %}
     </div>
 </body>
-</html>
-=======
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Birthday App - Graphic Edition</title>
-
-    <style>
-    /* ================= RESET ================= */
-    *{
-        margin:0;
-        padding:0;
-        box-sizing:border-box;
-    }
-
-    /* ================= BODY ================= */
-    body{
-        height:100vh;
-        background:
-            radial-gradient(circle at top, #ffffff, #cfcfcf),
-            repeating-linear-gradient(
-                45deg,
-                rgba(0,0,0,0.02),
-                rgba(0,0,0,0.02) 2px,
-                transparent 2px,
-                transparent 6px
-            );
-        font-family:'Segoe UI',sans-serif;
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-        justify-content:center;
-        overflow:hidden;
-        color:#222;
-    }
-
-    /* ================= WAVE NAME ================= */
-    .wave-text{
-        display:flex;
-        margin-bottom:25px;
-        filter: drop-shadow(0 8px 15px rgba(0,0,0,.25));
-    }
-
-    .wave-text span{
-        font-size:56px;
-        font-weight:900;
-        color:#111;
-        animation:wave 1.6s ease-in-out infinite;
-        display:inline-block;
-        letter-spacing:2px;
-    }
-
-    .wave-text span:nth-child(n){
-        animation-delay:calc(var(--i) * .12s);
-    }
-
-    @keyframes wave{
-        0%,100%{transform:translateY(0);}
-        50%{transform:translateY(-18px);}
-    }
-
-    /* ================= CARD ================= */
-    .card{
-        width:460px;
-        padding:50px 35px;
-        border-radius:32px;
-        background:rgba(255,255,255,.55);
-        backdrop-filter:blur(22px);
-        -webkit-backdrop-filter:blur(22px);
-        box-shadow:
-            0 25px 60px rgba(0,0,0,.25),
-            inset 0 2px 3px rgba(255,255,255,.7);
-        text-align:center;
-        position:relative;
-        z-index:5;
-        animation:cardPop .8s ease;
-    }
-
-    @keyframes cardPop{
-        from{transform:scale(.85);opacity:0}
-        to{transform:scale(1);opacity:1}
-    }
-
-    /* ================= TITLES ================= */
-    h2{
-        font-size:36px;
-        color:#000;
-        margin-bottom:22px;
-        text-shadow:0 3px 8px rgba(0,0,0,.25);
-    }
-
-    h3{
-        margin-top:25px;
-        font-size:26px;
-        color:#222;
-    }
-
-    p{
-        margin-top:12px;
-        font-size:18px;
-        font-weight:600;
-        color:#444;
-    }
-
-    /* ================= INPUT ================= */
-    input{
-        width:85%;
-        padding:16px;
-        border-radius:16px;
-        border:none;
-        outline:none;
-        background:rgba(255,255,255,.85);
-        box-shadow:
-            inset 0 5px 10px rgba(0,0,0,.12);
-        font-size:16px;
-        transition:.35s;
-    }
-
-    input:focus{
-        transform:scale(1.05);
-        box-shadow:
-            0 0 0 2px #000 inset,
-            0 10px 25px rgba(0,0,0,.2);
-    }
-
-    /* ================= BUTTON ================= */
-    button{
-        margin-top:24px;
+</html>        margin-top:24px;
         padding:15px 38px;
         border-radius:18px;
         border:none;
@@ -343,41 +234,3 @@
         100%{bottom:110%;transform:translateX(40px);}
     }
 
-    </style>
-</head>
-
-<body>
-
-<!-- GRAPHIC BACKGROUND ORBS -->
-<div class="orb"></div>
-<div class="orb"></div>
-<div class="orb"></div>
-
-<!-- WAVE NAME -->
-{% if name %}
-<div class="wave-text">
-    {% for char in name %}
-        <span style="--i:{{ loop.index }}">{{ char }}</span>
-    {% endfor %}
-</div>
-{% endif %}
-
-<!-- CARD -->
-<div class="card">
-    <h2>🎂 Happy Birthday 🎂</h2>
-
-    <form method="post">
-        <input type="text" name="name" placeholder="Enter your name" required>
-        <br>
-        <button type="submit">Wish Me!</button>
-    </form>
-
-    {% if name and message %}
-        <h3>Happy Birthday {{ name }} 🎉</h3>
-        <p>{{ message }}</p>
-    {% endif %}
-</div>
-
-</body>
-</html>
->>>>>>> f71966d (add Birthday card for birthday):templates/Index.html
