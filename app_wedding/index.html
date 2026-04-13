@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Evelyn & Alexander | The Cinematic Experience</title>
+
+    <!-- UI/UX Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/app.css">
+
+    <!-- GPU-Accelerated Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <!-- Real-time Logic (Firebase SDK Compat) -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+</head>
+<body class="app-theme dark-mode">
+
+    <!-- 1. Secure Invitation Gateway -->
+    <div id="gate" class="gate-overlay">
+        <div id="particles-js" class="abs-fill"></div>
+        <div class="gate-card glassmorphism-luxury">
+            <h2 class="playfair gold glow-text">Private Access</h2>
+            <p class="minimal-label">ENTER INVITE TOKEN</p>
+            <div class="input-glow-wrapper">
+                <input type="password" id="tokenInput" placeholder="••••••••">
+                <div class="input-line"></div>
+            </div>
+            <button id="gateBtn" class="btn-cinematic">Decrypt Invitation</button>
+            <div id="decrypting" class="hidden">
+                <div class="loader-pulse"></div>
+                <p class="minimal-label">Decrypting Invitation Data...</p>
+            </div>
+            <p id="gateError" class="error-text hidden">Unauthorized Token. (Try 'LOVE2026')</p>
+        </div>
+    </div>
+
+    <!-- 2. Cinematic Opening Sequence -->
+    <div id="intro" class="intro-overlay hidden">
+        <div class="intro-bg-zoom"></div>
+        <div class="intro-content">
+            <p class="intro-line serif-italic">A story of love begins...</p>
+            <h1 class="intro-names playfair">Evelyn & Alexander</h1>
+            <button id="enterApp" class="btn-minimal-luxury">Enter Experience</button>
+        </div>
+    </div>
+
+    <!-- Background Music Engine -->
+    <div id="audioControl" class="music-widget hidden">
+        <div class="audio-waves" id="audioWaves">
+            <span></span><span></span><span></span><span></span>
+        </div>
+        <audio id="bgAudio" loop preload="auto">
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- 3. Personalized App Core -->
+    <main id="app" class="app-main hidden">
+        
+        <!-- Header / Greeting -->
+        <header class="app-header glassmorphism">
+            <div class="header-top">
+                <span class="live-indicator"><span class="pulse-dot"></span> 128 Guests Online</span>
+            </div>
+            <div class="greeting-box">
+                <p class="minimal-label">WELCOMING YOU,</p>
+                <h2 id="dynamicName" class="script-text gold">Dear Guest & Family</h2>
+            </div>
+        </header>
+
+        <div class="scroll-container">
+            
+            <!-- Hero Card -->
+            <section id="home" class="scene hero-scene">
+                <div class="hero-parallax-card glassmorphism-luxury">
+                    <span class="save-the-date">SAVE THE DATE</span>
+                    <h1 class="wedding-names playfair">Evelyn & Alexander</h1>
+                    <div class="hero-date-box neumorphism-gold">
+                        <span class="date-digit">10</span>
+                        <span class="date-sep">/</span>
+                        <span class="date-digit">12</span>
+                        <span class="date-sep">/</span>
+                        <span class="date-digit">26</span>
+                    </div>
+                    <p class="hero-tagline">To Love, To Honor, and To Cherish</p>
+                </div>
+            </section>
+
+            <!-- 4. Living Wedding Timeline Engine -->
+            <section id="timeline" class="scene timeline-scene">
+                <h3 class="section-title playfair gold glow-text">Wedding Journey</h3>
+                <div class="timeline-container">
+                    <div class="timeline-card glassmorphism-light expand-on-scroll">
+                        <div class="card-inner">
+                            <span class="event-tag">01</span>
+                            <h3>Engagement</h3>
+                            <p class="event-time">Dec 01 | 7:00 PM</p>
+                            <p class="event-venue">Crystal Hall, Paris</p>
+                            <div class="status-indicator completed">Completed</div>
+                        </div>
+                    </div>
+                    <div class="timeline-card glassmorphism-luxury expand-on-scroll active-event">
+                        <div class="card-inner">
+                            <span class="event-tag">02</span>
+                            <h3>Wedding Ceremony</h3>
+                            <p class="event-time">Dec 10 | 4:30 PM</p>
+                            <p class="event-venue">St. Nicholas Cathedral</p>
+                            <div class="status-indicator upcoming">Coming Soon</div>
+                        </div>
+                    </div>
+                    <div class="timeline-card glassmorphism-light expand-on-scroll">
+                        <div class="card-inner">
+                            <span class="event-tag">03</span>
+                            <h3>The Grand Reception</h3>
+                            <p class="event-time">Dec 10 | 8:00 PM</p>
+                            <p class="event-venue">Emerald Gardens Estate</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Smart Location Intelligence -->
+            <section id="location" class="scene location-scene">
+                <div class="location-card neumorphism-dark">
+                    <div class="map-placeholder">
+                        <div class="map-shimmer"></div>
+                        <div class="map-marker gold-glow">📍</div>
+                    </div>
+                    <div class="location-info">
+                        <h4 class="gold">St. Nicholas Cathedral</h4>
+                        <p class="dist-time">Distance: ~2.4 km | Est. Time: 12 mins</p>
+                        <p class="smart-tip">💡 Best time to leave: 4:10 PM</p>
+                        <button class="btn-gold-fill">Navigate in Google Maps</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. Live Social Wedding Wall -->
+            <section id="social" class="scene social-scene">
+                <h3 class="section-title playfair gold">Wedding Wall</h3>
+                <div id="wishesWall" class="wishes-grid glassmorphism">
+                    <!-- Dynamic Wishes -->
+                </div>
+                <div class="post-wish-box glassmorphism-luxury">
+                    <input type="text" id="wishInput" placeholder="Write your blessing here...">
+                    <button id="postWish" class="btn-icon-gold"><span>🕊️</span></button>
+                </div>
+            </section>
+
+            <!-- 7. Event Reaction System -->
+            <div class="reaction-engine">
+                <button class="reaction-btn" data-type="love">❤️</button>
+                <button class="reaction-btn" data-type="celebrate">🎉</button>
+                <button class="reaction-btn" data-type="blessings">✨</button>
+            </div>
+
+            <!-- 8. Immersive Memory Gallery -->
+            <section id="gallery" class="scene gallery-scene">
+                <h3 class="section-title playfair gold">Memories</h3>
+                <div class="gallery-3d-carousel" id="carousel3D">
+                    <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80')"></div>
+                    <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80')"></div>
+                    <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=800&q=80')"></div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="app-footer">
+                <p class="script-text gold">Thank You</p>
+                <p class="footer-msg">For being part of our story.</p>
+                <div class="rsvp-reminder">
+                    <p>RSVP Deadline: Nov 20</p>
+                    <button class="btn-minimal">Kindly RSVP Now</button>
+                </div>
+            </footer>
+        </div>
+
+    </main>
+
+    <!-- Reaction Bubble Container -->
+    <div id="reactionBubbles"></div>
+
+    <!-- UI Interaction Sounds -->
+    <audio id="clickSound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"></audio>
+
+    <!-- Core App Logic -->
+    <script src="assets/js/effects.js"></script>
+    <script src="assets/js/realtime.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

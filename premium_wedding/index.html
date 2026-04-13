@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Evelyn & Alexander | The Wedding Experience</title>
+    
+    <!-- External Libs -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body class="luxury-theme">
+
+    <!-- 1. Password Gate -->
+    <div id="passwordGate" class="gate-overlay">
+        <div class="glass-box center-content">
+            <h2 class="serif gold">Private Access</h2>
+            <p class="minimal-text">Please enter the invitation password</p>
+            <div class="form-group">
+                <input type="password" id="gatePass" placeholder="••••••••">
+                <button id="unlockBtn" class="btn-gold">Unlock</button>
+            </div>
+            <p id="passError" class="error-msg hidden">Incorrect Password. Try 'love'</p>
+        </div>
+    </div>
+
+    <!-- 2. Personalized Entry -->
+    <div id="entryScreen" class="gate-overlay hidden">
+        <div class="entry-content">
+            <h1 id="guestGreeting" class="script-font gold">Dear Guest,</h1>
+            <p class="fade-in">You are warmly invited to witness our forever.</p>
+            <button id="openInvite" class="btn-open">Open Invitation</button>
+        </div>
+    </div>
+
+    <!-- Special Effects Layer -->
+    <div id="petal-container"></div>
+    <div id="grain-overlay"></div>
+
+    <!-- 12. Music Control -->
+    <div id="musicToggle" class="music-fab muted">
+        <div class="music-icon">
+            <span></span><span></span><span></span><span></span>
+        </div>
+        <audio id="bgMusic" loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- Main Card Container -->
+    <div id="mainContainer" class="main-wrapper hidden">
+        <main class="card-body glass">
+            
+            <!-- 3. Hero Section -->
+            <section class="hero-section">
+                <span class="save-the-date">SAVE THE DATE</span>
+                <h1 class="couple-names script-font">Evelyn & Alexander</h1>
+                <div class="hero-divider"></div>
+                <p class="wedding-date">10 . 12 . 2026</p>
+                <div class="scroll-down-hint"></div>
+            </section>
+
+            <!-- 4. Invitation Message -->
+            <section class="section message-section">
+                <div class="content-box">
+                    <p class="typewriter" id="inviteMessage">In the dance of stars, we found our rhythm. Join us as we begin our most beautiful chapter yet.</p>
+                </div>
+            </section>
+
+            <!-- 5. Event Details -->
+            <section class="section details-section">
+                <h2 class="section-title gold serif">The Celebration</h2>
+                <div class="details-grid">
+                    <div class="detail-card glass">
+                        <i class="icon">🏛️</i>
+                        <h3>Ceremony</h3>
+                        <p>St. Nicholas Cathedral</p>
+                        <p>4:00 PM - 6:00 PM</p>
+                        <a href="#" class="btn-minimal">Google Maps</a>
+                    </div>
+                    <div class="detail-card glass">
+                        <i class="icon">🥂</i>
+                        <h3>Reception</h3>
+                        <p>Emerald Gardens Estate</p>
+                        <p>7:00 PM - Late</p>
+                        <a href="#" class="btn-minimal">Google Maps</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. Countdown Timer -->
+            <section class="section countdown-section">
+                <div class="timer-display" id="timer">
+                    <div class="t-block"><span id="days">00</span><label>Days</label></div>
+                    <div class="t-block"><span id="hours">00</span><label>Hrs</label></div>
+                    <div class="t-block"><span id="mins">00</span><label>Mins</label></div>
+                    <div class="t-block"><span id="secs">00</span><label>Secs</label></div>
+                </div>
+            </section>
+
+            <!-- 7. Gallery Slider -->
+            <section class="section gallery-section">
+                <h2 class="section-title gold serif">Our Story</h2>
+                <div class="slider-wrapper">
+                    <div class="slider" id="gallerySlider">
+                        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80')"></div>
+                        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80')"></div>
+                        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=800&q=80')"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 8. Live Guest Wishes -->
+            <section class="section wishes-section">
+                <h2 class="section-title gold serif">Guest Wishes</h2>
+                <div id="wishesList" class="wishes-wall glass">
+                    <!-- Dynamic wishes go here -->
+                    <div class="wish-card">"Can't wait for the big day! Best wishes!" - Sarah</div>
+                </div>
+                <div class="wish-form">
+                    <input type="text" id="wishName" placeholder="Your Name">
+                    <textarea id="wishText" placeholder="Write a sweet message..."></textarea>
+                    <button id="submitWish" class="btn-gold">Send Wish</button>
+                </div>
+            </section>
+
+            <!-- 9. RSVP Smart Form -->
+            <section class="section rsvp-section" id="rsvp">
+                <h2 class="section-title gold serif">Kindly RSVP</h2>
+                <form id="rsvpForm" class="glass-card">
+                    <div class="input-row">
+                        <input type="text" id="rsvpName" required placeholder="Full Name">
+                    </div>
+                    <div class="input-row">
+                        <select id="rsvpAttend" required>
+                            <option value="Yes">Will Attend</option>
+                            <option value="No">Declined</option>
+                        </select>
+                    </div>
+                    <div class="input-row">
+                        <input type="number" id="rsvpGuests" value="1" min="1" max="5" placeholder="Number of Guests">
+                    </div>
+                    <button type="submit" class="btn-gold-fill">Send RSVP</button>
+                </form>
+            </section>
+
+            <!-- 13. Footer -->
+            <footer class="footer">
+                <p class="script-font">Thank You</p>
+                <p class="minimal">For being part of our journey</p>
+                <p class="contact-info">Need help? WhatsApp: +1 234 567 890</p>
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- 11. Sticky Quick Actions -->
+    <div class="sticky-actions">
+        <a href="#rsvp" class="action-btn">RSVP</a>
+        <a href="https://wa.me/1234567890" class="action-btn wa-btn">WhatsApp</a>
+    </div>
+
+    <!-- Success Feedback Overlay -->
+    <div id="successOverlay" class="success-overlay hidden">
+        <div class="success-box glass">
+            <span class="gold-heart">💛</span>
+            <h2>Thank You!</h2>
+            <p id="successMsg">Response received.</p>
+            <button onclick="closeSuccess()" class="btn-minimal">Close</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/effects.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

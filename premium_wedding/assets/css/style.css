@@ -1,0 +1,179 @@
+:root {
+    --color-ivory: #FDFCF8;
+    --color-gold: #C5A059;
+    --color-gold-glow: rgba(197, 160, 89, 0.4);
+    --color-blush: #F4E1E1;
+    --color-emerald: #011F16;
+    --color-black: #0A0A0A;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(197, 160, 89, 0.2);
+    --font-script: 'Pinyon Script', cursive;
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    background-color: var(--color-black);
+    color: var(--color-ivory);
+    font-family: var(--font-serif);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+.hidden { display: none !important; }
+
+/* Background Grain */
+#grain-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 9999; opacity: 0.05;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+}
+
+/* Overlays (Gate & Entry) */
+.gate-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+    background: var(--color-emerald);
+    z-index: 10000;
+    display: flex; justify-content: center; align-items: center;
+    text-align: center; padding: 2rem;
+}
+
+.glass-box {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    padding: 3rem; border-radius: 5px;
+}
+
+/* Typography & Layout */
+.script-font { font-family: var(--font-script); font-size: 3.5rem; }
+.serif { font-family: var(--font-serif); }
+.gold { color: var(--color-gold); }
+.minimal-text { font-family: var(--font-sans); font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7; }
+
+/* Buttons */
+.btn-gold {
+    padding: 0.8rem 2rem; background: transparent;
+    border: 1px solid var(--color-gold); color: var(--color-gold);
+    font-family: var(--font-sans); text-transform: uppercase;
+    letter-spacing: 2px; cursor: pointer; transition: 0.4s;
+}
+
+.btn-gold:hover { background: var(--color-gold); color: var(--color-black); }
+
+.btn-gold-fill {
+    width: 100%; padding: 1rem; background: var(--color-gold);
+    color: var(--color-black); border: none; font-family: var(--font-sans);
+    text-transform: uppercase; letter-spacing: 3px; cursor: pointer;
+}
+
+.btn-open {
+    margin-top: 2rem; padding: 1rem 3rem; background: transparent;
+    border: 1px solid var(--color-gold); color: var(--color-gold);
+    font-size: 1.2rem; cursor: pointer;
+}
+
+/* Main Card Wrapper */
+.main-wrapper {
+    width: 100%; min-height: 100vh;
+    background: radial-gradient(circle at center, #023122 0%, #050505 80%);
+    padding: 2rem 1rem; display: flex; justify-content: center;
+}
+
+.card-body {
+    width: 100%; max-width: 700px;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 5px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    overflow: hidden;
+}
+
+/* Sections */
+.section { padding: 4rem 2rem; text-align: center; }
+
+/* Hero */
+.hero-section {
+    height: 90vh; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+}
+
+.save-the-date { font-family: var(--font-sans); letter-spacing: 8px; font-size: 0.8rem; }
+.couple-names { font-size: 5rem; margin: 1rem 0; text-shadow: 0 0 20px var(--color-gold-glow); }
+.hero-divider { width: 50px; height: 1px; background: var(--color-gold); margin: 2rem 0; }
+.wedding-date { font-family: var(--font-sans); letter-spacing: 5px; font-size: 1.1rem; }
+
+/* Details Grid */
+.details-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem; }
+.detail-card { padding: 2rem; border: 1px solid var(--glass-border); }
+.detail-card .icon { font-size: 2rem; display: block; margin-bottom: 1rem; }
+
+/* Countdown */
+.timer-display { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem; }
+.t-block { display: flex; flex-direction: column; }
+.t-block span { font-size: 2.5rem; color: var(--color-gold); font-weight: 300; }
+.t-block label { font-family: var(--font-sans); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; }
+
+/* Slider */
+.slider-wrapper { overflow: hidden; margin-top: 2rem; height: 400px; border-radius: 5px; }
+.slider { display: flex; height: 100%; transition: 0.8s cubic-bezier(0.6, 0, 0.4, 1); }
+.slide { min-width: 100%; background-size: cover; background-position: center; }
+
+/* Wishes Section */
+.wishes-wall { max-height: 300px; overflow-y: auto; padding: 1.5rem; margin-bottom: 2rem; text-align: left; }
+.wish-card { padding: 1rem; border-bottom: 1px solid var(--glass-border); font-style: italic; font-size: 0.9rem; }
+.wish-form input, .wish-form textarea {
+    width: 100%; padding: 1rem; background: rgba(255,255,255,0.05);
+    border: 1px solid var(--glass-border); color: white; margin-bottom: 1rem; outline: none;
+}
+
+/* Sticky Actions */
+.sticky-actions {
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 10px; z-index: 9000;
+}
+.action-btn {
+    padding: 0.6rem 1.5rem; background: var(--glass-bg); backdrop-filter: blur(10px);
+    border: 1px solid var(--color-gold); color: var(--color-gold); text-decoration: none;
+    font-family: var(--font-sans); font-size: 0.8rem; border-radius: 30px;
+}
+.wa-btn { background: rgba(37, 211, 102, 0.2); border-color: #25D366; color: #25D366; }
+
+/* Music FAB */
+.music-fab {
+    position: fixed; top: 20px; right: 20px; z-index: 9500;
+    width: 40px; height: 40px; background: var(--glass-bg); border-radius: 50%;
+    display: flex; justify-content: center; align-items: center; cursor: pointer;
+}
+.music-icon { display: flex; align-items: flex-end; gap: 2px; height: 15px; }
+.music-icon span { width: 2px; height: 5px; background: var(--color-gold); transition: 0.2s; }
+.playing span { animation: musicWave 1s infinite alternate; }
+@keyframes musicWave { from { height: 3px; } to { height: 15px; } }
+
+/* Success Overlay */
+.success-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8); z-index: 11000;
+    display: flex; justify-content: center; align-items: center;
+}
+.success-box { padding: 3rem; text-align: center; border: 1px solid var(--color-gold); }
+.gold-heart { font-size: 3rem; display: block; margin-bottom: 1rem; animation: pulse 1s infinite; }
+@keyframes pulse { from { transform: scale(1); } to { transform: scale(1.1); } }
+
+/* Desktop Tweaks */
+@media (min-width: 900px) {
+    .main-wrapper { padding: 4rem; }
+    .couple-names { font-size: 7rem; }
+}
+
+@media (max-width: 600px) {
+    .couple-names { font-size: 3.5rem; }
+    .section { padding: 3rem 1.5rem; }
+}
