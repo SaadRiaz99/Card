@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evelyn & Alexander | The Wedding Invitation</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@200;300;400&family=Pinyon+Script&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <!-- Grain Overlay -->
+    <div class="grain-overlay"></div>
+
+    <!-- Background Particles -->
+    <div id="particles-js"></div>
+
+    <!-- Background Music -->
+    <div class="music-control" id="musicToggle">
+        <div class="music-icon">
+            <span></span><span></span><span></span><span></span>
+        </div>
+        <audio id="bgMusic" loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- Entrance Transition -->
+    <div class="entrance-gate" id="entranceGate">
+        <div class="gate-content">
+            <h2 class="script-font">You are invited to</h2>
+            <button id="enterInvite" class="btn-luxury">Enter Invitation</button>
+        </div>
+    </div>
+
+    <main id="smooth-wrapper">
+        <div id="smooth-content">
+            
+            <!-- Hero Section -->
+            <section class="scene hero-scene" id="hero">
+                <div class="hero-content">
+                    <div class="parallax-layer" data-speed="0.2">
+                        <span class="date-reveal">SAVE THE DATE</span>
+                        <h1 class="couple-names script-font">Evelyn & Alexander</h1>
+                        <p class="wedding-date">10 . 12 . 2026</p>
+                    </div>
+                </div>
+                <div class="scroll-hint">
+                    <span>Scroll to explore</span>
+                    <div class="arrow"></div>
+                </div>
+            </section>
+
+            <!-- Invitation Message -->
+            <section class="scene message-scene" id="message">
+                <div class="message-container glass-card">
+                    <p class="reveal-text">In the dance of stars, our souls found their rhythm. We invite you to witness the beginning of our forever.</p>
+                </div>
+            </section>
+
+            <!-- Countdown Section -->
+            <section class="scene countdown-scene">
+                <h2 class="section-title">Counting down to Forever</h2>
+                <div class="countdown-timer" id="timer">
+                    <div class="time-block"><span id="days">00</span><label>Days</label></div>
+                    <div class="time-block"><span id="hours">00</span><label>Hours</label></div>
+                    <div class="time-block"><span id="minutes">00</span><label>Minutes</label></div>
+                    <div class="time-block"><span id="seconds">00</span><label>Seconds</label></div>
+                </div>
+            </section>
+
+            <!-- Event Details -->
+            <section class="scene details-scene">
+                <div class="details-grid">
+                    <div class="detail-card glass-card">
+                        <div class="card-inner">
+                            <h3 class="gold-text">The Ceremony</h3>
+                            <p>St. Nicholas Cathedral</p>
+                            <p>4:00 PM - 6:00 PM</p>
+                            <button class="btn-minimal">View Map</button>
+                        </div>
+                    </div>
+                    <div class="detail-card glass-card">
+                        <div class="card-inner">
+                            <h3 class="gold-text">The Celebration</h3>
+                            <p>Emerald Gardens Estate</p>
+                            <p>7:00 PM - Late</p>
+                            <button class="btn-minimal">Add to Calendar</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RSVP Trigger -->
+            <section class="scene rsvp-scene">
+                <div class="rsvp-content">
+                    <h2 class="script-font">Will you join us?</h2>
+                    <button id="openRSVP" class="btn-luxury">Kindly RSVP</button>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- RSVP Modal -->
+    <div class="modal glass-modal" id="rsvpModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 class="script-font">RSVP</h2>
+            <form id="rsvpForm">
+                <div class="form-group">
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <select required>
+                        <option value="" disabled selected>Will you attend?</option>
+                        <option value="yes">Accept with Pleasure</option>
+                        <option value="no">Decline with Regret</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="number" placeholder="Guest Count" min="1" max="5">
+                </div>
+                <button type="submit" class="btn-luxury">Send Response</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

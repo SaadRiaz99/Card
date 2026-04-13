@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Our Wedding Invitation</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- GSAP for smooth reveals (minimal) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body class="mobile-only">
+
+    <!-- Loading Screen / Personal Greeting -->
+    <div id="entryScreen" class="entry-screen">
+        <div class="entry-content">
+            <h2 class="serif">Warmest Greeting,</h2>
+            <h1 id="guestName" class="script-font">Dear Guest</h1>
+            <p class="minimal-text">We are delighted to share our joy with you.</p>
+            <button id="openBtn" class="btn-open">Open Invitation</button>
+        </div>
+    </div>
+
+    <!-- Background Music -->
+    <div id="musicContainer" class="music-fab">
+        <div class="music-wave" id="musicBtn">
+            <span></span><span></span><span></span>
+        </div>
+        <audio id="bgMusic" loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- Main Content (Initially hidden) -->
+    <main id="mainCard" class="main-card hidden">
+        
+        <!-- Hero Section -->
+        <section class="hero glass">
+            <div class="shimmer-bg"></div>
+            <p class="top-label">SAVE THE DATE</p>
+            <h1 class="couple-names script-font">Sophia & Daniel</h1>
+            <div class="date-badge">
+                <span>15</span>
+                <span>.</span>
+                <span>06</span>
+                <span>.</span>
+                <span>2026</span>
+            </div>
+            <p class="location-label">Green Valley Estate, Tuscany</p>
+        </section>
+
+        <!-- Message -->
+        <section class="section message">
+            <div class="glass-card">
+                <p class="quote">"In every story, there is a beautiful beginning. Ours starts here, with you."</p>
+                <p class="invite-text">Together with our families, we joyfully invite you to celebrate our wedding day.</p>
+            </div>
+        </section>
+
+        <!-- Gallery (Simplified Slider) -->
+        <section class="section gallery">
+            <h3 class="section-title">Our Moments</h3>
+            <div class="slider-container">
+                <div class="slider">
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=800&q=80');"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Event Details -->
+        <section class="section event-details">
+            <div class="glass-card grid-details">
+                <div class="detail-item">
+                    <i class="icon">📅</i>
+                    <h4>The Day</h4>
+                    <p>Sunday, June 15, 2026</p>
+                    <p>4:30 PM Onwards</p>
+                </div>
+                <hr>
+                <div class="detail-item">
+                    <i class="icon">📍</i>
+                    <h4>The Venue</h4>
+                    <p>Green Valley Estate</p>
+                    <p>Villa del Sol, Tuscany, Italy</p>
+                    <a href="https://maps.google.com" target="_blank" class="btn-minimal">Open in Maps</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Countdown -->
+        <section class="section countdown">
+            <h3 class="section-title">Counting Down</h3>
+            <div id="timer" class="timer-grid">
+                <div class="t-box"><span id="days">00</span><label>Days</label></div>
+                <div class="t-box"><span id="hours">00</span><label>Hrs</label></div>
+                <div class="t-box"><span id="mins">00</span><label>Mins</label></div>
+                <div class="t-box"><span id="secs">00</span><label>Secs</label></div>
+            </div>
+        </section>
+
+        <!-- RSVP Form -->
+        <section class="section rsvp" id="rsvp-section">
+            <div class="glass-card">
+                <h3 class="script-font gold">Kindly RSVP</h3>
+                <form id="rsvpForm">
+                    <div class="input-group">
+                        <input type="text" id="formName" required placeholder=" ">
+                        <label>Your Full Name</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="tel" id="formPhone" required placeholder=" ">
+                        <label>Phone Number</label>
+                    </div>
+                    <div class="radio-group">
+                        <label class="radio-btn">
+                            <input type="radio" name="attendance" value="Yes" checked>
+                            <span>I'm Attending</span>
+                        </label>
+                        <label class="radio-btn">
+                            <input type="radio" name="attendance" value="No">
+                            <span>I'm Sorry, I Can't</span>
+                        </label>
+                    </div>
+                    <div class="input-group">
+                        <input type="number" id="formGuests" value="1" min="1" max="5">
+                        <label>Number of Guests</label>
+                    </div>
+                    <button type="submit" class="btn-submit">Confirm Presence</button>
+                </form>
+                <p class="or-text">- or -</p>
+                <a id="directWA" href="#" class="btn-wa">Direct WhatsApp RSVP</a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="script-font">Thank You</p>
+            <p>We can't wait to see you there!</p>
+            <div class="footer-shimmer"></div>
+        </footer>
+
+    </main>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal hidden">
+        <div class="modal-content glass">
+            <span class="heart">💛</span>
+            <h2>Thank You!</h2>
+            <p>Your response has been sent.</p>
+            <button onclick="closeModal()" class="btn-minimal">Close</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

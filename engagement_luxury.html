@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Engagement of Sophia & Alexander</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@200;300;400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #c5a059;
+            --light-gold: #e2c275;
+            --champagne: #f9f5f0;
+            --deep-gold: #8a6d3b;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.15);
+            --text-dark: #2c2c2c;
+            --text-light: #5e5e5e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--champagne);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .calligraphy {
+            font-family: 'Great Vibes', cursive;
+        }
+
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Particles Background */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(249, 245, 240, 0.4), rgba(249, 245, 240, 0.4)), 
+                        url('https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle, transparent 20%, var(--champagne) 100%);
+            opacity: 0.6;
+        }
+
+        .hero-content {
+            z-index: 3;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .hero-title {
+            font-size: clamp(4rem, 10vw, 8rem);
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .hero-date {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--text-light);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            color: var(--primary-gold);
+            margin-bottom: 40px;
+        }
+
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 8px 32px 0 rgba(197, 160, 89, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Ceremony & Details */
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .detail-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-gold);
+            margin-bottom: 15px;
+        }
+
+        /* Countdown Timer */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .timer-box {
+            background: var(--white);
+            border: 1px solid var(--light-gold);
+            width: 100px;
+            padding: 20px 10px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease;
+        }
+
+        .timer-box:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-gold);
+        }
+
+        .timer-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            display: block;
+            color: var(--primary-gold);
+        }
+
+        .timer-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-light);
+        }
+
+        /* Map Section */
+        .map-container {
+            margin-top: 50px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 5px solid var(--white);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.1);
+            height: 400px;
+        }
+
+        /* RSVP Form */
+        .rsvp-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            text-align: left;
+        }
+
+        .form-group label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .rsvp-form input, .rsvp-form select {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.8);
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .rsvp-form input:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 10px rgba(197, 160, 89, 0.1);
+        }
+
+        .btn-gold {
+            background: var(--primary-gold);
+            color: var(--white);
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            margin-top: 20px;
+        }
+
+        .btn-gold:hover {
+            background: var(--deep-gold);
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(197, 160, 89, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            background: var(--white);
+            text-align: center;
+            border-top: 1px solid var(--champagne);
+        }
+
+        .footer-logo {
+            font-size: 2.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-title {
+                font-size: 4rem;
+            }
+            .countdown {
+                gap: 10px;
+            }
+            .timer-box {
+                width: 75px;
+                padding: 15px 5px;
+            }
+            .timer-num {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="particles-js"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="2000">
+            <p class="hero-subtitle">The Engagement Ceremony</p>
+            <h1 class="hero-title">Sophia & Alexander</h1>
+            <p class="hero-date serif">October 24th, 2026</p>
+            <div style="margin-top: 30px;">
+                <a href="#rsvp" class="btn-gold">Join the Celebration</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Details Section -->
+        <section id="details">
+            <h2 class="section-title" data-aos="fade-up">Our Story Begins</h2>
+            <div class="glass-card" data-aos="zoom-in" data-aos-duration="1500">
+                <p class="serif" style="font-size: 1.2rem; margin-bottom: 30px; font-style: italic;">
+                    "In all the world, there is no heart for me like yours. <br>In all the world, there is no love for you like mine."
+                </p>
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <h3>When</h3>
+                        <p>Saturday, Oct 24, 2026</p>
+                        <p>6:00 PM onwards</p>
+                    </div>
+                    <div class="detail-item">
+                        <h3>Where</h3>
+                        <p>The Grand Ballroom</p>
+                        <p>Lakeside Manor, NY</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Countdown Section -->
+        <section id="countdown">
+            <h2 class="section-title" data-aos="fade-up">The Countdown</h2>
+            <div class="countdown" data-aos="fade-up">
+                <div class="timer-box">
+                    <span class="timer-num" id="days">00</span>
+                    <span class="timer-label">Days</span>
+                </div>
+                <div class="timer-box">
+                    <span class="timer-num" id="hours">00</span>
+                    <span class="timer-label">Hrs</span>
+                </div>
+                <div class="timer-box">
+                    <span class="timer-num" id="minutes">00</span>
+                    <span class="timer-label">Min</span>
+                </div>
+                <div class="timer-box">
+                    <span class="timer-num" id="seconds">00</span>
+                    <span class="timer-label">Sec</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Venue Section -->
+        <section id="venue">
+            <h2 class="section-title" data-aos="fade-up">The Venue</h2>
+            <p class="serif" style="margin-bottom: 30px;">123 Elegance Boulevard, New York, NY 10001</p>
+            <div class="map-container" data-aos="flip-up">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.47222774507!2d-73.98509668459388!3d40.74844097932847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1625585552345!5m2!1sen!2sus" 
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </section>
+
+        <!-- RSVP Section -->
+        <section id="rsvp">
+            <h2 class="section-title" data-aos="fade-up">RSVP</h2>
+            <div class="glass-card" data-aos="fade-up">
+                <form class="rsvp-form" id="rsvpForm">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Contact Email</label>
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Will you be attending?</label>
+                        <select required>
+                            <option value="">Select an option</option>
+                            <option value="yes">Yes, I'll be there</option>
+                            <option value="no">Sorry, I can't make it</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-gold">Send Response</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Save the Date -->
+        <section id="save-date">
+            <div class="floating">
+                <h2 class="section-title">Save the Date</h2>
+                <p class="serif">We can't wait to celebrate with you!</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-logo">S & A</div>
+        <p class="serif">Together Always</p>
+        <p style="font-size: 0.8rem; margin-top: 20px; color: var(--text-light);">© 2026 Crafted with Love</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init();
+
+        // Particles Configuration
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#c5a059" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.3, "random": true },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": false },
+                "move": { "enable": true, "speed": 1, "direction": "bottom", "random": true, "straight": false, "out_mode": "out" }
+            },
+            "interactivity": { "events": { "onhover": { "enable": false } } }
+        });
+
+        // Countdown Timer
+        const targetDate = new Date("Oct 24, 2026 18:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // RSVP Form Handling
+        document.getElementById('rsvpForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert("Thank you! Your response has been sent to Sophia & Alexander.");
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
