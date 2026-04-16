@@ -1,0 +1,367 @@
+/* Global Styles */
+:root {
+    --whitesmoke: #F5F5F5;
+    --ivory: #FFFFF0;
+    --pearl: #FDFDFD;
+    --gold-deep: #B38728;
+    --gold-light: #FBF5B7;
+    --gold-metallic: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+    --text-dark: #2D2D2D;
+    --text-muted: #666666;
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-script: 'Pinyon Script', cursive;
+    --font-royal: 'Cinzel', serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--whitesmoke);
+    color: var(--text-dark);
+    font-family: var(--font-serif);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    position: relative;
+    background: radial-gradient(circle, #ffffff 0%, #f0f0f0 100%);
+}
+
+/* Background Textures */
+.background-texture {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    opacity: 0.05;
+    pointer-events: none;
+    background-image: url("https://www.transparenttextures.com/patterns/marble-similar.png");
+    z-index: 1;
+}
+
+.jaali-pattern {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    opacity: 0.03;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L35 25L60 30L35 35L30 60L25 35L0 30L25 25Z' fill='%23B38728'/%3E%3C/svg%3E");
+    z-index: 2;
+}
+
+/* Animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.fade-in.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Invitation Card */
+.invitation-wrapper {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    max-width: 100%;
+}
+
+.invitation-card {
+    background: var(--pearl);
+    width: 100%;
+    max-width: 600px;
+    padding: 4rem 3rem;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1), inset 0 0 100px rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(179, 135, 40, 0.2);
+    overflow: hidden;
+}
+
+/* Dynamic Glow Effect */
+.invitation-card::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: radial-gradient(
+        400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+        rgba(251, 245, 183, 0.1), 
+        transparent 40%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Embossed Borders */
+.border-outer {
+    position: absolute;
+    top: 15px; left: 15px; right: 15px; bottom: 15px;
+    border: 1px solid transparent;
+    border-image: var(--gold-metallic) 1;
+    opacity: 0.7;
+}
+
+.border-inner {
+    position: absolute;
+    top: 25px; left: 25px; right: 25px; bottom: 25px;
+    border: 0.5px solid var(--gold-deep);
+    opacity: 0.3;
+}
+
+/* Card Content */
+.card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 5;
+}
+
+/* Monogram */
+.monogram {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 1rem;
+}
+
+.monogram-text {
+    font-family: var(--font-royal);
+    font-size: 30px;
+    fill: url(#goldGradient);
+    font-weight: bold;
+}
+
+/* Bismillah Section */
+.bismillah-section {
+    margin-bottom: 0.5rem;
+}
+
+.arabic {
+    font-size: 2.2rem;
+    color: var(--gold-deep);
+    margin-bottom: 0.5rem;
+    font-family: serif;
+    text-shadow: 0 0 10px rgba(179, 135, 40, 0.2);
+}
+
+.bismillah-en {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--text-muted);
+}
+
+/* Intro Text */
+.intro-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    font-style: italic;
+    max-width: 80%;
+}
+
+/* Names Section */
+.names-section {
+    margin: 1.5rem 0;
+}
+
+.groom-name {
+    font-family: var(--font-script);
+    font-size: 5rem;
+    color: var(--text-dark);
+    line-height: 1;
+    background: var(--gold-metallic);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 2px 5px rgba(179, 135, 40, 0.15));
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+.divider .line {
+    width: 60px;
+    height: 1px;
+    background: var(--gold-metallic);
+    opacity: 0.5;
+}
+
+.divider .dot {
+    width: 4px;
+    height: 4px;
+    background: var(--gold-deep);
+    border-radius: 50%;
+}
+
+.secondary-guest {
+    font-family: var(--font-royal);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+}
+
+.guest-name {
+    color: var(--gold-deep);
+    font-weight: bold;
+}
+
+/* Event Details */
+.event-details {
+    width: 100%;
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.detail-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.detail-block .label {
+    font-family: var(--font-royal);
+    font-size: 0.85rem;
+    letter-spacing: 5px;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+}
+
+.detail-block .value {
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.venue-name {
+    font-weight: 600 !important;
+}
+
+.venue-location {
+    font-size: 1rem !important;
+    color: var(--text-muted);
+}
+
+/* Footer Msg */
+.footer-msg {
+    margin-top: 1.5rem;
+    font-family: var(--font-royal);
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    color: var(--gold-deep);
+}
+
+/* Corner Decorations */
+.corner {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border: 1px solid var(--gold-deep);
+    opacity: 0.2;
+}
+
+.corner-tl { top: 35px; left: 35px; border-right: none; border-bottom: none; }
+.corner-tr { top: 35px; right: 35px; border-left: none; border-bottom: none; }
+.corner-bl { bottom: 35px; left: 35px; border-right: none; border-top: none; }
+.corner-br { bottom: 35px; right: 35px; border-left: none; border-top: none; }
+
+/* Actions Panel */
+.actions {
+    margin-top: 1rem;
+}
+
+.premium-btn {
+    background: var(--gold-metallic);
+    border: none;
+    padding: 1px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.premium-btn span {
+    display: block;
+    background: var(--text-dark);
+    color: #fff;
+    padding: 14px 40px;
+    font-family: var(--font-royal);
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    transition: all 0.4s ease;
+}
+
+.premium-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(179, 135, 40, 0.2);
+}
+
+.premium-btn:hover span {
+    background: transparent;
+    color: var(--text-dark);
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    .invitation-card {
+        padding: 3rem 1.5rem;
+    }
+    .groom-name {
+        font-size: 3.5rem;
+    }
+    .arabic {
+        font-size: 1.6rem;
+    }
+    .detail-block .value {
+        font-size: 1.2rem;
+    }
+}
+
+/* Print Layout (A4 Centered) */
+@media print {
+    body {
+        background: white;
+    }
+    .page-container {
+        padding: 0;
+        background: none;
+    }
+    .background-texture, .jaali-pattern, .no-print {
+        display: none !important;
+    }
+    .invitation-wrapper {
+        margin: 0;
+        padding: 0;
+        transform: none !important;
+        opacity: 1 !important;
+    }
+    .invitation-card {
+        box-shadow: none;
+        border: 2px solid var(--gold-deep);
+        margin: auto;
+        width: 170mm;
+        height: 257mm; /* Optimized for A4 aspect */
+    }
+}

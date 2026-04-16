@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #C8A24D;
+            --gold-light: #E2CB7C;
+            --gold-dark: #A68532;
+            --gold-muted: rgba(200, 162, 77, 0.15);
+            --ivory: #FAF8F5;
+            --ivory-warm: #F6F3EE;
+            --whitesmoke: #F0EDE8;
+            --text-primary: #3A3632;
+            --text-secondary: #5C5750;
+            --text-muted: #8A847C;
+            --card-width: 520px;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            background:
+                radial-gradient(ellipse at 12% 25%, rgba(200, 195, 185, 0.5) 0%, transparent 50%),
+                radial-gradient(ellipse at 88% 75%, rgba(195, 188, 175, 0.4) 0%, transparent 45%),
+                radial-gradient(ellipse at 50% 50%, rgba(205, 198, 185, 0.25) 0%, transparent 55%),
+                linear-gradient(155deg, #EBE7E1 0%, #F3F0EB 25%, #E9E5DF 50%, #F1EEE9 75%, #ECE8E2 100%);
+            background-attachment: fixed;
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+        }
+
+        /* Subtle noise texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ==================== CARD ==================== */
+        .card-wrapper {
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(20px) scale(0.98);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        .card-wrapper.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .card {
+            position: relative;
+            width: var(--card-width);
+            max-width: 90vw;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(200, 162, 77, 0.04) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 100%, rgba(200, 162, 77, 0.03) 0%, transparent 40%),
+                linear-gradient(180deg, #FAF8F5 0%, #F7F4EF 50%, #FAF8F5 100%);
+            border: 2px solid var(--gold);
+            padding: 56px 48px;
+            overflow: hidden;
+            transition: box-shadow 0.5s ease;
+            box-shadow:
+                inset 0 0 0 1px rgba(200, 162, 77, 0.2),
+                inset 0 0 40px rgba(200, 162, 77, 0.04),
+                0 4px 20px rgba(0, 0, 0, 0.06),
+                0 20px 60px rgba(0, 0, 0, 0.08);
+        }
+
+        .card:hover {
+            box-shadow:
+                inset 0 0 0 1px rgba(200, 162, 77, 0.25),
+                inset 0 0 40px rgba(200, 162, 77, 0.06),
+                0 4px 20px rgba(0, 0, 0, 0.06),
+                0 20px 60px rgba(0, 0, 0, 0.08),
+                0 0 80px rgba(200, 162, 77, 0.08);
+        }
+
+        /* Embossed inner border */
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 10px;
+            border: 1px solid rgba(200, 162, 77, 0.25);
+            pointer-events: none;
+        }
+        .card::after {
+            content: '';
+            position: absolute;
+            inset: 14px;
+            border: 0.5px solid rgba(200, 162, 77, 0.12);
+            pointer-events: none;
+        }
+
+        /* Corner decorations */
+        .corner {
+            position: absolute;
+            width: 36px;
+            height: 36px;
+            z-index: 2;
+        }
+        .corner::before, .corner::after {
+            content: '';
+            position: absolute;
+            background: var(--gold);
+        }
+        .corner-tl { top: 18px; left: 18px; }
+        .corner-tl::before { top: 0; left: 0; width: 1.5px; height: 100%; }
+        .corner-tl::after { top: 0; left: 0; width: 100%; height: 1.5px; }
+
+        .corner-tr { top: 18px; right: 18px; }
+        .corner-tr::before { top: 0; right: 0; width: 1.5px; height: 100%; }
+        .corner-tr::after { top: 0; right: 0; width: 100%; height: 1.5px; }
+
+        .corner-bl { bottom: 18px; left: 18px; }
+        .corner-bl::before { bottom: 0; left: 0; width: 1.5px; height: 100%; }
+        .corner-bl::after { bottom: 0; left: 0; width: 100%; height: 1.5px; }
+
+        .corner-br { bottom: 18px; right: 18px; }
+        .corner-br::before { bottom: 0; right: 0; width: 1.5px; height: 100%; }
+        .corner-br::after { bottom: 0; right: 0; width: 100%; height: 1.5px; }
+
+        /* ==================== MANDALA BACKGROUND ==================== */
+        .mandala-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -55%);
+            width: 440px;
+            height: 440px;
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ==================== CARD CONTENT ==================== */
+        .card-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* ==================== MONOGRAM ==================== */
+        .monogram {
+            position: relative;
+            width: 88px;
+            height: 88px;
+            margin-bottom: 28px;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+        }
+        .monogram.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .monogram svg {
+            width: 100%;
+            height: 100%;
+        }
+        .monogram-glow {
+            position: absolute;
+            inset: -10px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(200, 162, 77, 0.15) 0%, transparent 70%);
+            animation: monogramPulse 4s ease-in-out infinite;
+        }
+        @keyframes monogramPulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        /* ==================== BISMILLAH ==================== */
+        .bismillah {
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.8s ease 0.6s, transform 0.8s ease 0.6s;
+        }
+        .bismillah.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .bismillah-arabic {
+            font-size: 26px;
+            color: var(--gold-dark);
+            line-height: 1.6;
+            direction: rtl;
+            font-family: 'Traditional Arabic', 'Simplified Arabic', 'Noto Naskh Arabic', serif;
+        }
+        .bismillah-english {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 10.5px;
+            font-weight: 400;
+            color: var(--text-muted);
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            margin-top: 6px;
+        }
+
+        /* ==================== ORNAMENTAL DIVIDERS ==================== */
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 20px 0;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .divider.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .divider-line {
+            width: 50px;
+            height: 0.5px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        .divider-diamond {
+            width: 5px;
+            height: 5px;
+            background: var(--gold);
+            transform: rotate(45deg);
+            flex-shrink: 0;
+        }
+        .divider-dot {
+            width: 3px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* ==================== COUPLE NAMES ==================== */
+        .couple-names {
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 1s ease 0.9s, transform 1s ease 0.9s;
+        }
+        .couple-names.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .groom-name, .bride-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 52px;
+            line-height: 1.2;
+            color: var(--gold);
+            text-shadow:
+                0 0 30px rgba(200, 162, 77, 0.25),
+                0 0 60px rgba(200, 162, 77, 0.1);
+        }
+        .ampersand {
+            font-family: 'Great Vibes', cursive;
+            font-size: 36px;
+            color: var(--gold-light);
+            margin: -4px 0;
+            line-height: 1;
+        }
+
+        /* ==================== INVITATION TEXT ==================== */
+        .invitation-text {
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.8s ease 1.2s, transform 0.8s ease 1.2s;
+        }
+        .invitation-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .invitation-text p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14.5px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            letter-spacing: 0.5px;
+        }
+        .invitation-text .request-line {
+            font-style: italic;
+            font-size: 15px;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        /* ==================== EVENT DETAILS ==================== */
+        .event-details {
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.8s ease 1.4s, transform 0.8s ease 1.4s;
+        }
+        .event-details.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .event-date {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-primary);
+            letter-spacing: 1.5px;
+            margin-bottom: 2px;
+        }
+        .event-time {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .event-venue {
+            margin-top: 12px;
+        }
+        .venue-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 14.5px;
+            font-weight: 500;
+            color: var(--text-primary);
+            letter-spacing: 1px;
+        }
+        .venue-address {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 12.5px;
+            font-weight: 400;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
+        /* ==================== DINNER NOTE ==================== */
+        .dinner-note {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.8s ease 1.6s, transform 0.8s ease 1.6s;
+        }
+        .dinner-note.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .dinner-note p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 11.5px;
+            font-style: italic;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ==================== SPECIAL INVITE ==================== */
+        .special-invite {
+            width: 100%;
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.8s ease 1.8s, transform 0.8s ease 1.8s;
+        }
+        .special-invite.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .special-invite-divider {
+            width: 100%;
+            height: 0.5px;
+            background: linear-gradient(90deg, transparent 5%, var(--gold) 50%, transparent 95%);
+            margin-bottom: 18px;
+        }
+        .special-invite-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+        .special-invite-names {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0 20px;
+        }
+        .special-invite-names span {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            line-height: 2;
+            white-space: nowrap;
+        }
+
+        .special-invite-subcategory {
+            margin-bottom: 16px;
+        }
+        .special-invite-subcategory:last-child {
+            margin-bottom: 0;
+        }
+        .subcategory-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        /* ==================== ADDITIONAL NOTE ==================== */
+        .additional-note {
+            width: 100%;
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.8s ease 2.0s, transform 0.8s ease 2.0s;
+        }
+        .additional-note.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .additional-note p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 11px;
+            font-style: italic;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* ==================== DOWNLOAD BUTTON ==================== */
+        .download-btn-wrapper {
+            position: relative;
+            z-index: 1;
+            margin-top: 32px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.8s ease 2.2s, transform 0.8s ease 2.2s;
+        }
+        .download-btn-wrapper.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 36px;
+            background: transparent;
+            border: 1.5px solid var(--gold);
+            color: var(--gold-dark);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 3.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+        .download-btn:hover {
+            color: var(--ivory);
+            border-color: var(--gold);
+            box-shadow: 0 0 30px rgba(200, 162, 77, 0.25);
+        }
+        .download-btn:hover::before {
+            opacity: 1;
+        }
+        .download-btn svg {
+            width: 14px;
+            height: 14px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform 0.3s ease;
+        }
+        .download-btn:hover svg {
+            transform: translateY(2px);
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 560px) {
+            body {
+                padding: 24px 12px;
+            }
+            .card {
+                padding: 40px 28px;
+            }
+            .card::before { inset: 8px; }
+            .card::after { inset: 11px; }
+            .corner { width: 28px; height: 28px; }
+            .corner-tl { top: 14px; left: 14px; }
+            .corner-tr { top: 14px; right: 14px; }
+            .corner-bl { bottom: 14px; left: 14px; }
+            .corner-br { bottom: 14px; right: 14px; }
+            .monogram { width: 72px; height: 72px; margin-bottom: 22px; }
+            .bismillah-arabic { font-size: 22px; }
+            .bismillah-english { font-size: 9.5px; letter-spacing: 2px; }
+            .groom-name { font-size: 40px; }
+            .ampersand { font-size: 28px; }
+            .invitation-text p { font-size: 13.5px; }
+            .event-date { font-size: 14.5px; }
+            .mandala-bg { width: 320px; height: 320px; }
+            .special-invite-names { gap: 0 14px; }
+            .special-invite-names span { font-size: 11px; }
+            .subcategory-title { font-size: 10px; }
+        }
+
+        @media (max-width: 380px) {
+            .card { padding: 32px 20px; }
+            .groom-name { font-size: 34px; }
+            .ampersand { font-size: 24px; }
+        }
+
+        /* ==================== PRINT STYLES ==================== */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        @media print {
+            body {
+                background: white !important;
+                padding: 0;
+                min-height: auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            body::before { display: none; }
+            .card-wrapper {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+            .monogram, .bismillah, .divider, .couple-names,
+            .invitation-text, .event-details, .dinner-note,
+            .special-invite, .additional-note {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+            .monogram-glow { display: none; }
+            .card {
+                box-shadow: none !important;
+                border-color: #B8962E !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .card::before { border-color: rgba(184, 150, 46, 0.35) !important; }
+            .card::after { border-color: rgba(184, 150, 46, 0.18) !important; }
+            .corner::before, .corner::after { background: #B8962E !important; }
+            .divider-line { background: linear-gradient(90deg, transparent, #B8962E, transparent) !important; }
+            .divider-diamond { background: #B8962E !important; }
+            .divider-dot { background: #B8962E !important; }
+            .groom-name { color: #B8962E !important; text-shadow: none !important; }
+            .ampersand { color: #C8A850 !important; }
+            .bismillah-arabic { color: #A68532 !important; }
+            .special-invite-title { color: #B8962E !important; }
+            .special-invite-divider { background: linear-gradient(90deg, transparent 5%, #B8962E 50%, transparent 95%) !important; }
+            .mandala-bg svg * { stroke: #B8962E !important; fill: #B8962E !important; }
+            .download-btn-wrapper { display: none !important; }
+            .mandala-bg { opacity: 0.05 !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-wrapper" id="cardWrapper">
+        <div class="card">
+            <!-- Corner Decorations -->
+            <div class="corner corner-tl"></div>
+            <div class="corner corner-tr"></div>
+            <div class="corner corner-bl"></div>
+            <div class="corner corner-br"></div>
+
+            <!-- Mandala Background -->
+            <div class="mandala-bg">
+                <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" fill="none">
+                    <defs>
+                        <g id="arm">
+                            <line x1="0" y1="18" x2="0" y2="-195" stroke-width="0.6"/>
+                            <path d="M-18,-85 C-18,-118 18,-118 18,-85" stroke-width="0.5"/>
+                            <path d="M-12,-145 C-12,-170 12,-170 12,-145" stroke-width="0.5"/>
+                            <path d="M-6,-185 C-6,-198 6,-198 6,-185" stroke-width="0.4"/>
+                            <circle cx="0" cy="-62" r="2.2" fill="#C8A24D" stroke="none"/>
+                            <circle cx="0" cy="-130" r="1.8" fill="#C8A24D" stroke="none"/>
+                            <circle cx="0" cy="-190" r="2.8" fill="#C8A24D" stroke="none"/>
+                            <circle cx="-14" cy="-105" r="1.2" fill="#C8A24D" stroke="none"/>
+                            <circle cx="14" cy="-105" r="1.2" fill="#C8A24D" stroke="none"/>
+                        </g>
+                    </defs>
+                    <g transform="translate(250,250)" stroke="#C8A24D">
+                        <circle r="205" stroke-width="0.4"/>
+                        <circle r="200" stroke-width="0.3"/>
+                        <circle r="175" stroke-width="0.25" stroke-dasharray="3 6"/>
+                        <circle r="168" stroke-width="0.25"/>
+                        <use href="#arm" transform="rotate(0)"/>
+                        <use href="#arm" transform="rotate(45)"/>
+                        <use href="#arm" transform="rotate(90)"/>
+                        <use href="#arm" transform="rotate(135)"/>
+                        <use href="#arm" transform="rotate(180)"/>
+                        <use href="#arm" transform="rotate(225)"/>
+                        <use href="#arm" transform="rotate(270)"/>
+                        <use href="#arm" transform="rotate(315)"/>
+                        <polygon points="0,-95 67.2,-67.2 95,0 67.2,67.2 0,95 -67.2,67.2 -95,0 -67.2,-67.2" stroke-width="0.5"/>
+                        <polygon points="0,-72 50.9,-50.9 72,0 50.9,50.9 0,72 -50.9,50.9 -72,0 -50.9,-50.9" stroke-width="0.35" stroke-dasharray="2 4"/>
+                        <polygon points="0,-45 31.8,-31.8 45,0 31.8,31.8 0,45 -31.8,31.8 -45,0 -31.8,-31.8" stroke-width="0.45"/>
+                        <circle r="22" stroke-width="0.4"/>
+                        <circle r="10" stroke-width="0.35"/>
+                        <circle r="4" fill="#C8A24D" stroke="none" opacity="0.6"/>
+                        <!-- Connecting arcs between arms -->
+                        <g stroke-width="0.3" opacity="0.7">
+                            <path d="M13.4,-13.4 A19,19 0 0,1 22.5,0"/>
+                            <path d="M13.4,13.4 A19,19 0 0,1 0,22.5"/>
+                            <path d="M-13.4,13.4 A19,19 0 0,1 -22.5,0"/>
+                            <path d="M-13.4,-13.4 A19,19 0 0,1 0,-22.5"/>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Card Content -->
+            <div class="card-content">
+
+                <!-- Monogram -->
+                <div class="monogram" id="monogram">
+                    <div class="monogram-glow"></div>
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none">
+                        <!-- Outer decorative ring -->
+                        <circle cx="50" cy="50" r="46" stroke="#C8A24D" stroke-width="1"/>
+                        <circle cx="50" cy="50" r="43" stroke="#C8A24D" stroke-width="0.4" stroke-dasharray="2 3"/>
+                        <!-- Petal points around ring -->
+                        <g stroke="#C8A24D" stroke-width="0.8">
+                            <line x1="50" y1="4" x2="50" y2="10"/>
+                            <line x1="50" y1="90" x2="50" y2="96"/>
+                            <line x1="4" y1="50" x2="10" y2="50"/>
+                            <line x1="90" y1="50" x2="96" y2="50"/>
+                            <line x1="17.5" y1="17.5" x2="21.7" y2="21.7"/>
+                            <line x1="78.3" y1="78.3" x2="82.5" y2="82.5"/>
+                            <line x1="82.5" y1="17.5" x2="78.3" y2="21.7"/>
+                            <line x1="21.7" y1="78.3" x2="17.5" y2="82.5"/>
+                        </g>
+                        <!-- Small dots at cardinal points -->
+                        <g fill="#C8A24D">
+                            <circle cx="50" cy="2" r="1.5"/>
+                            <circle cx="50" cy="98" r="1.5"/>
+                            <circle cx="2" cy="50" r="1.5"/>
+                            <circle cx="98" cy="50" r="1.5"/>
+                        </g>
+                        <!-- Inner ring -->
+                        <circle cx="50" cy="50" r="34" stroke="#C8A24D" stroke-width="0.6"/>
+                        <circle cx="50" cy="50" r="31" stroke="#C8A24D" stroke-width="0.3"/>
+                        <!-- Center symbol -->
+                        <text x="50" y="58" text-anchor="middle" font-family="'Great Vibes', cursive" font-size="28" fill="#C8A24D">&amp;</text>
+                    </svg>
+                </div>
+
+                <!-- Bismillah -->
+                <div class="bismillah" id="bismillah">
+                    <div class="bismillah-arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+                    <div class="bismillah-english">In the name of Allah, the Most Gracious, the Most Merciful</div>
+                </div>
+
+                <!-- Divider -->
+                <div class="divider" id="divider1">
+                    <div class="divider-line"></div>
+                    <div class="divider-dot"></div>
+                    <div class="divider-diamond"></div>
+                    <div class="divider-dot"></div>
+                    <div class="divider-line"></div>
+                </div>
+
+                <!-- Couple Names -->
+                <div class="couple-names" id="coupleNames">
+                    <div class="groom-name">Usman Zafar</div>
+                </div>
+
+                <!-- Divider -->
+                <div class="divider" id="divider2" style="transition-delay: 1.1s;">
+                    <div class="divider-line"></div>
+                    <div class="divider-dot"></div>
+                    <div class="divider-diamond"></div>
+                    <div class="divider-dot"></div>
+                    <div class="divider-line"></div>
+                </div>
+
+                <!-- Invitation Text -->
+                <div class="invitation-text" id="invitationText">
+                    <p class="request-line">Safdar Iqbal, M. Riaz, Ijaz Hussain, and Sajjad Hussain</p>
+                    <p>request the honour of your presence<br>at the wedding ceremony of</p>
+                    <p>Usman Zafar (S/O Zafar Iqbal)</p>
+                </div>
+
+                <!-- Divider -->
+                <div class="divider" id="divider3" style="transition-delay: 1.3s; margin: 22px 0;">
+                    <div class="divider-line" style="width: 30px;"></div>
+                    <div class="divider-dot"></div>
+                    <div class="divider-line" style="width: 30px;"></div>
+                </div>
+
+                <!-- Event Details -->
+                <div class="event-details" id="eventDetails">
+                    <div class="event-date">Barat Ceremony</div>
+                    <div class="event-venue">
+                        <div class="venue-name">Ahmad Marquee</div>
+                        <div class="venue-address">Near Kalma Chowk, Satellite Town, Jhang, Punjab, Pakistan</div>
+                    </div>
+                    <div class="event-date" style="margin-top: 20px;">Walima Reception</div>
+                    <div class="event-venue">
+                        <div class="venue-name">ROYALS Castle Events Marquee</div>
+                        <div class="venue-address">Shadab Colony, Jhang Sadar, Punjab, Pakistan</div>
+                    </div>
+                </div>
+
+                <!-- Dinner Note -->
+                <div class="dinner-note" id="dinnerNote" style="margin-top: 18px;">
+                    <p>and memorable style</p>
+                </div>
+
+                <!-- Special Invite Section -->
+                <div class="special-invite" id="specialInvite" style="margin-top: 24px;">
+                    <div class="special-invite-divider"></div>
+                    <div class="special-invite-title">Special Invite</div>
+                    <div class="special-invite-subcategory">
+                        <div class="subcategory-title">Family</div>
+                        <div class="special-invite-names">
+                            <span>Zafar Iqbal</span>
+                            <span>Safdar Iqbal</span>
+                            <span>M. Riaz</span>
+                            <span>Ijaz Hussain</span>
+                            <span>Sajjad Hussain</span>
+                        </div>
+                    </div>
+                    <div class="special-invite-subcategory">
+                        <div class="subcategory-title">Relatives</div>
+                        <div class="special-invite-names">
+                            <span>Imran Khalid</span>
+                            <span>Ghulam Mustafa</span>
+                            <span>Ghulam Murtaza</span>
+                            <span>Muhammad Arshad</span>
+                            <span>Ghulam Mustafa</span>
+                            <span>M Aslam </span>
+                        </div>
+                    </div>
+                    <div class="special-invite-subcategory">
+                        <div class="subcategory-title">Cousins</div>
+                        <div class="special-invite-names">
+                            <span>Saad Bin Riaz</span>
+                            <span>Bilal Zafar</span>
+                            <span>Zeeshan Mustafa</span>
+                            <span>Saad Bin Riaz</span>
+                            <span>Nadeem Sadiq</span>
+                            <span>Sajjad Hussain</span>
+                            <span>Umar Bin Riaz</span>
+                            <span>Shayan Mustafa</span>
+                            <span>Zeeshan Mustafa</span>
+                            <span>Muhammad Talha</span>
+                            <span>Ali Raza</span>
+                            <span>Abdur Rehman</span>
+                            <span>Huzaifa Zafar</span>
+                            <span>Umair Zafar</span>
+                            <span>Arsalan Mustafa</span>
+                            <span>Kamran Mustafa</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Note -->
+                <div class="additional-note" id="additionalNote" style="margin-top: 20px;">
+                    <p>Please join us for an evening of celebration and joy.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Download Button -->
+    <div class="download-btn-wrapper" id="downloadBtn">
+        <button class="download-btn" onclick="downloadInvitation()">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Invitation
+        </button>
+    </div>
+
+    <script>
+        // Staggered fade-in animation on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Card wrapper fades in first
+            setTimeout(function() {
+                document.getElementById('cardWrapper').classList.add('visible');
+            }, 100);
+
+            // Then individual elements
+            var elements = [
+                { id: 'monogram', delay: 500 },
+                { id: 'bismillah', delay: 800 },
+                { id: 'divider1', delay: 1000 },
+                { id: 'coupleNames', delay: 1200 },
+                { id: 'divider2', delay: 1500 },
+                { id: 'invitationText', delay: 1700 },
+                { id: 'divider3', delay: 1900 },
+                { id: 'eventDetails', delay: 2100 },
+                { id: 'dinnerNote', delay: 2300 },
+                { id: 'specialInvite', delay: 2500 },
+                { id: 'additionalNote', delay: 2700 },
+                { id: 'downloadBtn', delay: 2900 }
+            ];
+
+            elements.forEach(function(item) {
+                setTimeout(function() {
+                    var el = document.getElementById(item.id);
+                    if (el) el.classList.add('visible');
+                }, item.delay);
+            });
+        });
+
+        // Download / Print function
+        function downloadInvitation() {
+            window.print();
+        }
+
+        // Subtle parallax on mouse move (desktop only)
+        if (window.matchMedia('(min-width: 768px)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.addEventListener('mousemove', function(e) {
+                var card = document.querySelector('.card');
+                if (!card) return;
+
+                var rect = card.getBoundingClientRect();
+                var centerX = rect.left + rect.width / 2;
+                var centerY = rect.top + rect.height / 2;
+                var deltaX = (e.clientX - centerX) / window.innerWidth;
+                var deltaY = (e.clientY - centerY) / window.innerHeight;
+
+                var rotateY = deltaX * 2;
+                var rotateX = -deltaY * 2;
+
+                card.style.transform = 'perspective(1200px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)';
+            });
+
+            document.addEventListener('mouseleave', function() {
+                var card = document.querySelector('.card');
+                if (card) {
+                    card.style.transition = 'transform 0.6s ease';
+                    card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
+                    setTimeout(function() {
+                        card.style.transition = '';
+                    }, 600);
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

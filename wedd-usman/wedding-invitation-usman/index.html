@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation | Usman Zafar</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Pinyon+Script&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="page-container">
+        <!-- Subtle Mughal Background Overlay -->
+        <div class="background-texture"></div>
+        <div class="jaali-pattern"></div>
+
+        <div class="invitation-wrapper fade-in" id="invitationCard">
+            <div class="invitation-card">
+                <!-- Inner Gold Border (Embossed style) -->
+                <div class="border-outer"></div>
+                <div class="border-inner"></div>
+
+                <div class="card-content">
+                    <!-- Royal Monogram -->
+                    <div class="monogram">
+                        <svg viewBox="0 0 100 100">
+                            <defs>
+                                <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#bf953f" />
+                                    <stop offset="25%" stop-color="#fcf6ba" />
+                                    <stop offset="50%" stop-color="#b38728" />
+                                    <stop offset="75%" stop-color="#fbf5b7" />
+                                    <stop offset="100%" stop-color="#aa771c" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="url(#goldGradient)" stroke-width="2" />
+                            <circle cx="50" cy="50" r="41" fill="none" stroke="url(#goldGradient)" stroke-width="0.5" stroke-dasharray="2,2" />
+                            <text x="50" y="58" text-anchor="middle" class="monogram-text">UZ</text>
+                        </svg>
+                    </div>
+
+                    <!-- Bismillah Header -->
+                    <div class="bismillah-section">
+                        <h2 class="arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</h2>
+                        <p class="bismillah-en">In the name of Allah, the Most Gracious, the Most Merciful</p>
+                    </div>
+
+                    <!-- Main Invitation Message -->
+                    <div class="intro-text">
+                        <p>With the grace of Allah, we cordially invite you to the wedding of our beloved son</p>
+                    </div>
+
+                    <!-- Names Section -->
+                    <div class="names-section">
+                        <h1 class="groom-name">Usman Zafar</h1>
+                        <div class="divider">
+                            <span class="dot"></span>
+                            <span class="line"></span>
+                            <span class="dot"></span>
+                        </div>
+                        <p class="secondary-guest">Honored Guest: <span class="guest-name">Ahmed Ijaz</span></p>
+                    </div>
+
+                    <!-- Event Details -->
+                    <div class="event-details">
+                        <div class="detail-block">
+                            <span class="label">The Date</span>
+                            <span class="value">FRIDAY, MAY 8, 2026</span>
+                        </div>
+                        <div class="detail-block">
+                            <span class="label">The Venue</span>
+                            <span class="value venue-name">ANY BANQUET</span>
+                            <span class="value venue-location">Jhang City, Pakistan</span>
+                        </div>
+                    </div>
+
+                    <!-- Footer Message -->
+                    <div class="footer-msg">
+                        <p>Dinner & Reception to follow</p>
+                    </div>
+
+                    <!-- Corner Decorations -->
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-tr"></div>
+                    <div class="corner corner-bl"></div>
+                    <div class="corner corner-br"></div>
+                </div>
+            </div>
+
+            <!-- Download Button -->
+            <div class="actions no-print">
+                <button id="downloadBtn" class="premium-btn">
+                    <span>Download Invitation</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

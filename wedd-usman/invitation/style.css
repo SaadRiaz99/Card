@@ -1,0 +1,323 @@
+/* Global Styles */
+:root {
+    --whitesmoke: #F5F5F5;
+    --ivory: #FFFFF0;
+    --pearl: #F0EAD6;
+    --off-white: #FAF9F6;
+    --gold-primary: #D4AF37;
+    --gold-gradient: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+    --soft-grey: #D1D1D1;
+    --text-color: #333333;
+    --serif-font: 'Playfair Display', serif;
+    --calligraphy-font: 'Pinyon Script', cursive;
+    --header-font: 'Cinzel', serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--whitesmoke);
+    font-family: var(--serif-font);
+    color: var(--text-color);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Page Container */
+.page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    position: relative;
+    background: radial-gradient(circle, #ffffff 0%, #f5f5f5 100%);
+}
+
+/* Background Overlay Pattern */
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.03;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L35 25L60 30L35 35L30 60L25 35L0 30L25 25Z' fill='%23D4AF37'/%3E%3C/svg%3E");
+    z-index: 1;
+}
+
+/* Card Wrapper */
+.card-wrapper {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    max-width: 100%;
+}
+
+/* Fade-in Animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+}
+
+.fade-in.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Invitation Card */
+.invitation-card {
+    background: var(--off-white);
+    width: 100%;
+    max-width: 550px;
+    padding: 3rem;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1), inset 0 0 100px rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    overflow: hidden;
+}
+
+.invitation-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("https://www.transparenttextures.com/patterns/marble-similar.png");
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+/* Inner Border */
+.inner-border {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border: 1px solid var(--gold-primary);
+    pointer-events: none;
+}
+
+.inner-border::after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 0.5px solid var(--gold-primary);
+    opacity: 0.5;
+}
+
+/* Content Layout */
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+}
+
+/* Monogram */
+.monogram {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 0.5rem;
+}
+
+/* Bismillah Section */
+.bismillah-section {
+    margin-bottom: 0.5rem;
+}
+
+.arabic {
+    font-size: 1.8rem;
+    color: var(--gold-primary);
+    margin-bottom: 0.2rem;
+    font-family: serif;
+}
+
+.bismillah-translation {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #888;
+}
+
+/* Invitation Header */
+.invitation-header p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    font-style: italic;
+    color: #666;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+/* Couple Names */
+.couple-names {
+    font-family: var(--calligraphy-font);
+    font-size: 4rem;
+    color: var(--text-color);
+    margin: 1rem 0;
+    line-height: 1;
+    position: relative;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 0 1rem;
+}
+
+.couple-names span {
+    display: inline-block;
+}
+
+.ampersand {
+    font-size: 2.5rem;
+    margin: 0 0.5rem;
+    -webkit-text-fill-color: var(--text-color); /* Ampersand in standard color for contrast */
+}
+
+/* Event Details */
+.event-details {
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.detail-label {
+    font-family: var(--header-font);
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    color: var(--gold-primary);
+}
+
+.detail-value {
+    font-size: 1.2rem;
+    color: #444;
+}
+
+/* Footer Message */
+.footer-message {
+    margin-top: 1rem;
+    font-family: var(--header-font);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: var(--gold-primary);
+}
+
+/* Mandala Decorations */
+.mandala-decoration {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0 C55 20 80 45 100 50 C80 55 55 80 50 100 C45 80 20 55 0 50 C20 45 45 20 50 0' fill='%23D4AF37' fill-opacity='0.4'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.top-left { top: -10px; left: -10px; transform: rotate(0deg); }
+.top-right { top: -10px; right: -10px; transform: rotate(90deg); }
+.bottom-left { bottom: -10px; left: -10px; transform: rotate(270deg); }
+.bottom-right { bottom: -10px; right: -10px; transform: rotate(180deg); }
+
+/* Actions */
+.actions {
+    margin-top: 1rem;
+}
+
+.btn-gold {
+    background: var(--gold-gradient);
+    border: none;
+    padding: 12px 30px;
+    font-family: var(--header-font);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    filter: brightness(1.1);
+}
+
+/* JS-enhanced Hover effect */
+.invitation-card.card-hover {
+    transform: scale(1.02);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15), inset 0 0 100px rgba(255, 255, 255, 0.6);
+}
+
+.invitation-card {
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    .invitation-card {
+        padding: 2rem 1.5rem;
+    }
+    .couple-names {
+        font-size: 3rem;
+    }
+    .arabic {
+        font-size: 1.4rem;
+    }
+    .detail-value {
+        font-size: 1rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white;
+    }
+    .page-container {
+        padding: 0;
+        background: none;
+    }
+    .background-overlay, .actions {
+        display: none !important;
+    }
+    .card-wrapper {
+        margin: 0;
+        padding: 0;
+        transform: none !important;
+        opacity: 1 !important;
+    }
+    .invitation-card {
+        box-shadow: none;
+        border: 1px solid var(--gold-primary);
+        max-width: none;
+        width: 170mm;
+        height: 250mm;
+        margin: auto;
+    }
+}

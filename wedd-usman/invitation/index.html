@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation | Ahmad & Sara</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="page-container">
+        <!-- Background Pattern (Subtle Jaali/Mughal Pattern) -->
+        <div class="background-overlay"></div>
+
+        <div class="card-wrapper fade-in">
+            <div class="invitation-card">
+                <!-- Inner Border -->
+                <div class="inner-border"></div>
+
+                <div class="content">
+                    <!-- Monogram -->
+                    <div class="monogram">
+                        <svg viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="url(#goldGradient)" stroke-width="2" />
+                            <defs>
+                                <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#bf953f" />
+                                    <stop offset="25%" stop-color="#fcf6ba" />
+                                    <stop offset="50%" stop-color="#b38728" />
+                                    <stop offset="75%" stop-color="#fbf5b7" />
+                                    <stop offset="100%" stop-color="#aa771c" />
+                                </linearGradient>
+                            </defs>
+                            <text x="50" y="58" text-anchor="middle" font-family="'Pinyon Script', cursive" font-size="35" fill="url(#goldGradient)">AS</text>
+                        </svg>
+                    </div>
+
+                    <!-- Bismillah -->
+                    <div class="bismillah-section">
+                        <p class="arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+                        <p class="bismillah-translation">In the name of Allah, the Most Gracious, the Most Merciful</p>
+                    </div>
+
+                    <!-- Invitation Header -->
+                    <div class="invitation-header">
+                        <p>Together with our families, we cordially invite you to celebrate the wedding of our children</p>
+                    </div>
+
+                    <!-- Couple Names -->
+                    <div class="couple-names">
+                        <span class="groom-name">Ahmad</span>
+                        <span class="ampersand">&</span>
+                        <span class="bride-name">Sara</span>
+                    </div>
+
+                    <!-- Event Details -->
+                    <div class="event-details">
+                        <div class="detail-item">
+                            <span class="detail-label">DATE</span>
+                            <span class="detail-value">Saturday, 25th October 2026</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">TIME</span>
+                            <span class="detail-value">Seven in the evening</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">VENUE</span>
+                            <span class="detail-value">The Grand Pearl Ballroom<br>Crystal Palace Hotel, City Centre</span>
+                        </div>
+                    </div>
+
+                    <!-- Footer Message -->
+                    <div class="footer-message">
+                        <p>Dinner & Reception to follow</p>
+                    </div>
+
+                    <!-- Decoration -->
+                    <div class="mandala-decoration top-left"></div>
+                    <div class="mandala-decoration top-right"></div>
+                    <div class="mandala-decoration bottom-left"></div>
+                    <div class="mandala-decoration bottom-right"></div>
+                </div>
+            </div>
+
+            <!-- Action Button -->
+            <div class="actions no-print">
+                <button id="downloadBtn" class="btn-gold">Download Invitation</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

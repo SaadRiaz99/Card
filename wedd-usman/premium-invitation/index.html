@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Wedding Invitation | Ahmad & Sara</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Pinyon+Script&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="luxury-container">
+        <!-- Subtle Mughal Background Pattern -->
+        <div class="mughal-overlay"></div>
+
+        <div class="card-wrapper" id="invitationWrapper">
+            <div class="invitation-card" id="card">
+                <!-- Embossed Gold Borders -->
+                <div class="border-outer"></div>
+                <div class="border-inner"></div>
+
+                <div class="card-content">
+                    <!-- Royal Monogram -->
+                    <div class="monogram-container">
+                        <div class="monogram-glow"></div>
+                        <svg viewBox="0 0 100 100" class="monogram-svg">
+                            <defs>
+                                <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#bf953f;stop-opacity:1" />
+                                    <stop offset="25%" style="stop-color:#fcf6ba;stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#b38728;stop-opacity:1" />
+                                    <stop offset="75%" style="stop-color:#fbf5b7;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#aa771c;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="50" cy="50" r="48" fill="none" stroke="url(#gold-grad)" stroke-width="1.5" />
+                            <circle cx="50" cy="50" r="44" fill="none" stroke="url(#gold-grad)" stroke-width="0.5" stroke-dasharray="2,2" />
+                            <text x="50" y="62" text-anchor="middle" class="monogram-text">AS</text>
+                        </svg>
+                    </div>
+
+                    <!-- Bismillah Header -->
+                    <div class="header-section">
+                        <h2 class="arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</h2>
+                        <p class="bismillah-en">In the name of Allah, the Most Gracious, the Most Merciful</p>
+                    </div>
+
+                    <!-- Invitation Text -->
+                    <div class="invitation-msg">
+                        <p class="intro">With the grace of Allah, we cordially invite you to celebrate the union of</p>
+                    </div>
+
+                    <!-- Couple Names -->
+                    <div class="names-section">
+                        <h1 class="couple-names">Ahmad <span class="amp">&</span> Sara</h1>
+                    </div>
+
+                    <!-- Event Logistics -->
+                    <div class="details-section">
+                        <div class="event-item">
+                            <span class="label">The Date</span>
+                            <span class="value">SATURDAY, OCTOBER 24, 2026</span>
+                        </div>
+                        <div class="event-item">
+                            <span class="label">The Time</span>
+                            <span class="value">SEVEN O'CLOCK IN THE EVENING</span>
+                        </div>
+                        <div class="event-item">
+                            <span class="label">The Venue</span>
+                            <span class="value venue-name">THE ROYAL PEARL BALLROOM</span>
+                            <span class="value venue-address">Crystal Heights Plaza, Downtown City</span>
+                        </div>
+                    </div>
+
+                    <div class="reception-tag">
+                        <p>Dinner & Reception to follow</p>
+                    </div>
+
+                    <!-- Special Invite Section -->
+                    <div class="special-invite-section">
+                        <div class="gold-divider"></div>
+                        <h3 class="special-title">Special Invite</h3>
+                        <div class="names-grid">
+                            <span>Saad Bin Riaz</span>
+                            <span>Nadeem Sadiq</span>
+                            <span>Sajjad Hussain</span>
+                            <span>Umar Bin Riaz</span>
+                            <span>Shayan Mustafa</span>
+                            <span>Zeeshan Mustafa</span>
+                            <span>Muhammad Talha</span>
+                            <span>Ali Raza</span>
+                            <span>Abdur Rehman</span>
+                            <span>Huzaifa Zafar</span>
+                            <span>Umair Zafar</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Corner Patterns -->
+                <div class="corner-pattern tl"></div>
+                <div class="corner-pattern tr"></div>
+                <div class="corner-pattern bl"></div>
+                <div class="corner-pattern br"></div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="actions-panel no-print">
+                <button id="downloadBtn" class="premium-btn">
+                    <span>Download Invitation</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

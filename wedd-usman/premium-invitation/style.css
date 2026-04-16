@@ -1,0 +1,314 @@
+:root {
+    --whitesmoke: #F8F8F8;
+    --pearl: #FDFDFD;
+    --gold-deep: #B38728;
+    --gold-light: #FBF5B7;
+    --gold-metallic: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+    --text-dark: #2D2D2D;
+    --text-muted: #666666;
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-script: 'Pinyon Script', cursive;
+    --font-royal: 'Cinzel', serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #E8E8E8;
+    color: var(--text-dark);
+    font-family: var(--font-serif);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.luxury-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+    position: relative;
+    background: radial-gradient(circle, #ffffff 0%, #e0e0e0 100%);
+}
+
+/* Mughal Jaali Pattern Overlay */
+.mughal-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    opacity: 0.04;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0l8 32 32 8-32 8-8 32-8-32-32-8 32-8z' fill='%23B38728'/%3E%3C/svg%3E");
+    z-index: 1;
+}
+
+.card-wrapper {
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+    max-width: 100%;
+}
+
+.card-wrapper.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Invitation Card */
+.invitation-card {
+    background: var(--pearl);
+    background-image: url("https://www.transparenttextures.com/patterns/marble-similar.png");
+    width: 100%;
+    max-width: 650px;
+    padding: 60px 50px;
+    position: relative;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.12), inset 0 0 100px rgba(255,255,255,0.8);
+    border: 1px solid rgba(179, 135, 40, 0.2);
+    text-align: center;
+    transition: all 0.8s ease;
+}
+
+/* Embossed Borders */
+.border-outer {
+    position: absolute;
+    top: 15px; left: 15px; right: 15px; bottom: 15px;
+    border: 2px solid transparent;
+    border-image: var(--gold-metallic) 1;
+    box-shadow: 0 0 10px rgba(179, 135, 40, 0.1);
+}
+
+.border-inner {
+    position: absolute;
+    top: 22px; left: 22px; right: 22px; bottom: 22px;
+    border: 0.5px solid var(--gold-deep);
+    opacity: 0.4;
+}
+
+/* Monogram */
+.monogram-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 30px;
+}
+
+.monogram-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.monogram-text {
+    font-family: var(--font-script);
+    font-size: 40px;
+    fill: url(#gold-grad);
+}
+
+.monogram-glow {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 80%; height: 80%;
+    background: radial-gradient(circle, rgba(251, 245, 183, 0.3) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+/* Header Sections */
+.arabic {
+    font-size: 2rem;
+    color: var(--gold-deep);
+    margin-bottom: 5px;
+}
+
+.bismillah-en {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--text-muted);
+}
+
+.intro {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin: 25px 0;
+    color: var(--text-muted);
+}
+
+/* Couple Names */
+.couple-names {
+    font-family: var(--font-script);
+    font-size: 5rem;
+    background: var(--gold-metallic);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    margin: 20px 0;
+    padding: 10px;
+}
+
+.amp {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    -webkit-text-fill-color: var(--text-dark);
+}
+
+/* Event Details */
+.details-section {
+    margin: 40px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.event-item .label {
+    display: block;
+    font-family: var(--font-royal);
+    font-size: 0.9rem;
+    letter-spacing: 5px;
+    color: var(--gold-deep);
+    margin-bottom: 8px;
+}
+
+.event-item .value {
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.venue-name {
+    font-weight: 600 !important;
+}
+
+.venue-address {
+    font-size: 1rem !important;
+    display: block;
+    color: var(--text-muted);
+}
+
+.reception-tag {
+    font-family: var(--font-royal);
+    font-size: 1rem;
+    letter-spacing: 3px;
+    color: var(--gold-deep);
+    margin-bottom: 40px;
+}
+
+/* Special Invite Section */
+.special-invite-section {
+    margin-top: 50px;
+    padding-top: 30px;
+}
+
+.gold-divider {
+    width: 60%;
+    height: 1px;
+    background: var(--gold-metallic);
+    margin: 0 auto 25px;
+    opacity: 0.4;
+}
+
+.special-title {
+    font-family: var(--font-royal);
+    font-size: 0.85rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 20px;
+}
+
+.names-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 20px;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.names-grid span {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+/* Corner Decorations */
+.corner-pattern {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0 L100 0 L100 10 L10 10 L10 100 L0 100 Z' fill='%23B38728' fill-opacity='0.2'/%3E%3C/svg%3E");
+    background-size: contain;
+    z-index: 3;
+}
+.tl { top: 25px; left: 25px; }
+.tr { top: 25px; right: 25px; transform: rotate(90deg); }
+.bl { bottom: 25px; left: 25px; transform: rotate(270deg); }
+.br { bottom: 25px; right: 25px; transform: rotate(180deg); }
+
+/* Buttons */
+.actions-panel {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.premium-btn {
+    background: var(--gold-metallic);
+    border: none;
+    padding: 1px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    border-radius: 4px;
+}
+
+.premium-btn span {
+    display: block;
+    background: var(--text-dark);
+    color: #fff;
+    padding: 15px 35px;
+    border-radius: 3px;
+    font-family: var(--font-royal);
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    transition: background 0.4s ease;
+}
+
+.premium-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(179, 135, 40, 0.3);
+}
+
+.premium-btn:hover span {
+    background: transparent;
+    color: var(--text-dark);
+}
+
+/* Hover Effect for Card */
+.invitation-card:hover {
+    box-shadow: 0 40px 80px rgba(179, 135, 40, 0.15);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    .invitation-card { padding: 40px 25px; }
+    .couple-names { font-size: 3.5rem; }
+    .arabic { font-size: 1.5rem; }
+    .names-grid span { font-size: 0.85rem; }
+}
+
+/* Print Layout (A4) */
+@media print {
+    .no-print { display: none !important; }
+    body { background: #fff; }
+    .luxury-container { padding: 0; display: block; }
+    .invitation-card {
+        box-shadow: none !important;
+        border: 2px solid var(--gold-deep) !important;
+        margin: 0 auto;
+        width: 170mm;
+        height: 257mm; /* Optimized for A4 */
+    }
+}
