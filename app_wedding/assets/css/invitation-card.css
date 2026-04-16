@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700&family=Great+Vibes&display=swap');
+
+:root {
+  color-scheme: light;
+  color: #333;
+  background: #f7f4f1;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  line-height: 1.5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.95), rgba(245,243,240,1) 40%);
+}
+
+.invitation-sheet {
+  width: 6in;
+  min-height: 8in;
+  padding: 1in;
+  background: linear-gradient(180deg, #f8f5f1 0%, #f3eee9 100%);
+  border: 1px solid rgba(196, 171, 136, 0.35);
+  border-radius: 28px;
+  box-shadow: 0 30px 70px rgba(66, 53, 38, 0.12);
+  position: relative;
+}
+
+.invitation-sheet::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(255,255,255,0.45) 0, transparent 28%),
+    linear-gradient(135deg, rgba(255,255,255,0.85) 0%, transparent 55%),
+    repeating-linear-gradient(90deg, transparent 0, transparent 1px, rgba(255,255,255,0.5) 1px, rgba(255,255,255,0.5) 2px);
+}
+
+.invitation-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 44px 36px;
+  display: grid;
+  gap: 1.25rem;
+  align-items: start;
+  border: 1px solid rgba(255, 244, 235, 0.8);
+  border-radius: 24px;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(8px);
+}
+
+.invitation-card::before {
+  content: '';
+  position: absolute;
+  top: 38px;
+  left: 38px;
+  right: 38px;
+  bottom: 38px;
+  border: 1px dashed rgba(196, 171, 136, 0.28);
+  pointer-events: none;
+  border-radius: 20px;
+}
+
+.monogram {
+  width: 108px;
+  height: 108px;
+  margin: 0 auto;
+  border: 1px solid rgba(172, 139, 84, 0.48);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.6), 0 18px 38px rgba(168, 135, 75, 0.12);
+  background: rgba(255,255,250,0.9);
+  position: relative;
+}
+
+.monogram::after {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(196, 171, 136, 0.22);
+  border-radius: 50%;
+}
+
+.initials {
+  font-size: 2.2rem;
+  letter-spacing: 0.16em;
+  color: #82683d;
+  font-weight: 700;
+}
+
+.headline {
+  text-align: center;
+  padding-top: 8px;
+}
+
+.bismillah {
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  color: #6b5e50;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.invitation-copy,
+.event-details,
+.reception-note {
+  width: min(100%, 86%);
+  margin: 0 auto;
+}
+
+.invitation-copy {
+  padding: 1rem 0;
+}
+
+.invitation-copy p,
+.event-details p,
+.reception-note p {
+  margin: 0.65rem 0;
+  color: #4f463d;
+  font-size: 1.02rem;
+}
+
+.couple {
+  margin: 1rem 0 0.3rem;
+  font-size: 1.5rem;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.couple .script {
+  display: inline-block;
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.35rem;
+  line-height: 0.92;
+  color: #593f25;
+  letter-spacing: 0;
+}
+
+.event-details {
+  padding: 1rem 0;
+  border-top: 1px solid rgba(196, 171, 136, 0.18);
+  border-bottom: 1px solid rgba(196, 171, 136, 0.18);
+}
+
+.event-details p {
+  font-size: 1rem;
+  text-align: center;
+}
+
+.event-details strong {
+  color: #3f352c;
+  font-weight: 600;
+}
+
+.reception-note {
+  text-align: center;
+  padding-top: 0.75rem;
+}
+
+.reception-note p {
+  margin-top: 0.5rem;
+  letter-spacing: 0.04em;
+  font-size: 0.98rem;
+}
+
+.invitation-card::after {
+  content: '';
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  right: -80px;
+  top: 38px;
+  background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 62%);
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+@media print {
+  body {
+    padding: 0;
+    background: #fff;
+  }
+  .invitation-sheet {
+    box-shadow: none;
+    margin: 0;
+    border: none;
+    page-break-after: avoid;
+  }
+}
+
+@media (max-width: 720px) {
+  body {
+    padding: 16px;
+  }
+  .invitation-sheet {
+    width: auto;
+    min-height: auto;
+    padding: 24px;
+  }
+  .invitation-card {
+    padding: 28px 22px;
+  }
+  .monogram {
+    width: 88px;
+    height: 88px;
+  }
+  .initials {
+    font-size: 1.9rem;
+  }
+  .couple {
+    font-size: 1.2rem;
+  }
+  .couple .script {
+    font-size: 1.9rem;
+  }
+}
